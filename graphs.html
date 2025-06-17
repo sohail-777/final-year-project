@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Graphs</title>
+  <style>
+    body { font-family: Arial; background: #eef; }
+    .graph {
+      border: 1px solid #ccc;
+      background: white;
+      margin: 15px;
+      padding: 10px;
+      display: inline-block;
+      text-align: center;
+      border-radius: 8px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    }
+    img { width: 250px; height: 200px; object-fit: contain; display: block; margin: 10px auto; }
+    button {
+      background-color: crimson;
+      color: white;
+      border: none;
+      padding: 5px 10px;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+    button:hover { background-color: darkred; }
+    nav {
+      background-color: #3498db;
+      padding: 1rem;
+      display: flex;
+      justify-content: space-around;
+      color: white;
+      font-weight: bold;
+    }
+
+    nav a {
+      color: white;
+      text-decoration: none;
+      padding: 0.5rem 1rem;
+      border-radius: 5px;
+      transition: background 0.3s;
+    }
+
+    nav a:hover {
+      background-color: #2980b9;
+    }
+
+    .no_inline{
+      position: fixed; 
+      bottom: 10px; 
+      right: 10px;
+    }
+    .no_inline_but{
+      padding: 10px; 
+      background: #007bff; 
+      color: white;
+    }
+  </style>
+</head>
+<body>
+  <nav>
+    <a href="home.html">Home</a>
+    <a href="analyze.html">Analyze</a>
+    <a href="graphs.html">Graphs</a>
+    <a href="about.html">About Us</a>
+  </nav>
+  <h1>Product Review Graphs</h1>
+  <div id="graphsContainer"></div>
+  <div class="no_inlline">
+    <button onclick="alert('Contact support at support@example.com')" class="no_inline_but">Help</button>
+  </div>
+  <script>
+    window.onload = () => {
+      fetch("http://127.0.0.1:5000/get-products")
+        .then(res => res.json())
+        .then(products => {
+          const container = document.getElementById("graphsContainer");
+          products.forEach(p => {
+            const div = document.createElement("div");
+            div.className = "graph";
+            div.innerHTML = `
+              <h3>${p.name} (${p.id})</h3>
+              <img src="http://127.0.0.1:5000/get-graph/${p.id}" alt="Graph"/>
+              <button onclick="deleteProduct('${p.id}', this)">Delete</button>
+            `;
+            container.appendChild(div);
+          });
+        });
+    };
+
+    function deleteProduct(pid, btn) {
+      fetch(`http://127.0.0.1:5000/delete/${pid}`, { method: "DELETE" })
+        .then(res => res.json())
+        .then(data => {
+          btn.parentElement.remove(); // remove graph div from DOM
+        });
+    }
+  </script>
+</body>
+</html>

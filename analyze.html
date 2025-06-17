@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Analyze Sentiment</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #ecf0f1;
+      margin: 0;
+    }
+
+    nav {
+      background-color: #3498db;
+      padding: 1rem;
+      display: flex;
+      justify-content: space-around;
+      color: white;
+      font-weight: bold;
+    }
+
+    nav a {
+      color: white;
+      text-decoration: none;
+      padding: 0.5rem 1rem;
+      border-radius: 5px;
+      transition: background 0.3s;
+    }
+
+    nav a:hover {
+      background-color: #2980b9;
+    }
+
+    .form-container {
+      margin: 2rem auto;
+      padding: 2rem;
+      max-width: 600px;
+      background: white;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+      border-radius: 10px;
+    }
+
+    h2 {
+      text-align: center;
+    }
+
+    input, textarea {
+      width: 100%;
+      padding: 10px;
+      margin: 10px 0;
+      border: 1px solid #ccc;
+      border-radius: 6px;
+      font-size: 16px;
+    }
+
+    button {
+      background: #2ecc71;
+      color: white;
+      border: none;
+      padding: 12px;
+      font-size: 16px;
+      border-radius: 6px;
+      cursor: pointer;
+      width: 100%;
+    }
+
+    button:hover {
+      background: #27ae60;
+    }
+    .no_inline{
+      position: fixed; 
+      bottom: 10px; 
+      right: 10px;
+    }
+    .no_inline_but{
+      padding: 10px; 
+      background: #007bff; 
+      color: white;
+    }
+  </style>
+</head>
+<body>
+  <nav>
+    <a href="home.html">Home</a>
+    <a href="analyze.html">Analyze</a>
+    <a href="graphs.html">Graphs</a>
+    <a href="about.html">About Us</a>
+  </nav>
+  <h1>Enter Your Reviews</h1>
+
+  <input type="text" id="productName" placeholder="Product Name" />
+  <input type="text" id="productId" placeholder="Unique Product ID" />
+  <input type="text" id="productImage" placeholder="Image URL (optional)" />
+  <textarea id="reviews" rows="5" placeholder="Enter reviews here... One per line."></textarea>
+  <button onclick="submitReview()">Analyze</button>
+
+  <div id="result"></div>
+
+  <!-- Place in body for every page -->
+    <div class="no_inline">
+    <button onclick="alert('Contact support at support@example.com')" class="no_inline_but">Help</button>
+    </div>
+
+  <script>
+    function submitReview() {
+      const name = document.getElementById("productName").value;
+      const id = document.getElementById("productId").value;
+      const image = document.getElementById("productImage").value;
+      const reviews = document.getElementById("reviews").value;
+
+      fetch("http://127.0.0.1:5000/analyze", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ name, id, image, reviews })
+      })
+      .then(res => res.json())
+      .then(data => {
+        document.getElementById("result").innerHTML =
+          `<p>Overall Sentiment: <strong>${data.overall}</strong></p>`;
+      })
+      .catch(err => {
+        document.getElementById("result").innerText = "Error analyzing review.";
+        console.error(err);
+      });
+    }
+  </script>
+</body>
+</html>

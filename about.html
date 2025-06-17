@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>About Us | Sentiment Analysis</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #f0f0f0;
+      margin: 0;
+    }
+
+    nav {
+      background-color: #3498db;
+      padding: 1rem;
+      display: flex;
+      justify-content: space-around;
+      color: white;
+      font-weight: bold;
+    }
+
+    nav a {
+      color: white;
+      text-decoration: none;
+      padding: 0.5rem 1rem;
+      border-radius: 5px;
+      transition: background 0.3s;
+    }
+
+    nav a:hover {
+      background-color: #2980b9;
+    }
+
+    .content {
+      padding: 2rem;
+      max-width: 800px;
+      margin: auto;
+      background: white;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+      border-radius: 8px;
+      margin-top: 2rem;
+    }
+    .no_inline{
+      position: fixed; 
+      bottom: 10px; 
+      right: 10px;
+    }
+    .no_inline_but{
+      padding: 10px; 
+      background: #007bff; 
+      color: white;
+    }
+  </style>
+</head>
+<body>
+
+  <nav>
+    <a href="home.html">Home</a>
+    <a href="analyze.html">Analyze</a>
+    <a href="graphs.html">Graphs</a>
+    <a href="about.html">About Us</a>
+  </nav>
+
+  <div class="content">
+    <h2>About This Website</h2>
+    <p>This project allows users to analyze the sentiment of product reviews using machine learning. You can enter reviews, see sentiment summaries, and view sentiment graphs.</p>
+    <p>Steps to use:</p>
+    <ul>
+      <li>Login to access the dashboard.</li>
+      <li>Go to <strong>Analyze</strong> to input product and review details.</li>
+      <li>Check <strong>Home</strong> to see previous analyses.</li>
+      <li>View <strong>Graphs</strong> to explore insights.</li>
+    </ul>
+    <p>Need help? Click the help button anytime!</p>
+  </div>
+  <!-- Place in body for every page -->
+    <div class="no_inlline">
+      <button onclick="alert('Contact support at support@example.com')" class="no_inline_but">Help</button>
+    </div>
+
+</body>
+</html>
