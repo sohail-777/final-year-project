@@ -1,1 +1,1 @@
-[]
+[{"name": "ear pods", "id": "80", "image": "", "sentiment": "positive", "counts": {"positive": 1, "neutral": 0, "negative": 0}}, {"name": "automatic spoon", "id": "6969", "image": "", "sentiment": "negative", "counts": {"positive": 0, "neutral": 0, "negative": 1}}, {"name": "bed sheets", "id": "5678", "image": "", "sentiment": "negative", "counts": {"positive": 0, "neutral": 0, "negative": 1}}]
