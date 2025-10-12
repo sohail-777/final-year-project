@@ -1,1 +1,24 @@
-[{"name": "slicer", "id": "1", "image": "", "sentiment": "POSITIVE", "graph": "/graphs/1.png"}, {"name": "slicer", "id": "1", "image": "", "sentiment": "POSITIVE", "graph": "/graphs/1.png"}]
+[
+  {
+    "name": "health ok",
+    "id": "99999",
+    "image": "https://m.media-amazon.com/images/I/81S3dSMkAWL._SX679_.jpg",
+    "sentiment": "NEUTRAL",
+    "counts": {
+      "positive": 24,
+      "neutral": 34,
+      "negative": 5
+    }
+  },
+  {
+    "name": "Nothing phone",
+    "id": "6789",
+    "image": "https://m.media-amazon.com/images/I/618TOqXk+bL._SX522_.jpg",
+    "sentiment": "POSITIVE",
+    "counts": {
+      "positive": 1,
+      "neutral": 0,
+      "negative": 0
+    }
+  }
+]
