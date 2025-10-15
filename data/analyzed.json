@@ -11,14 +11,14 @@
     }
   },
   {
-    "name": "Nothing phone",
-    "id": "6789",
-    "image": "https://m.media-amazon.com/images/I/618TOqXk+bL._SX522_.jpg",
-    "sentiment": "POSITIVE",
+    "name": "iphone",
+    "id": "936",
+    "image": "",
+    "sentiment": "NEGATIVE",
     "counts": {
-      "positive": 1,
+      "positive": 0,
       "neutral": 0,
-      "negative": 0
+      "negative": 1
     }
   }
 ]
